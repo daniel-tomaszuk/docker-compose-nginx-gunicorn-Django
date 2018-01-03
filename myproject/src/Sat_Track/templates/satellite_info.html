@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Satellite information <b>{{ satellite.name }}</b>:</h1>
+    <ul>
+        <li>Space agency:
+        {% if agency.id %}
+            <a href="{% url 'agency-info' agency_id=agency.id %}">
+                {{ agency.name }}
+            </a>
+        {% endif %}
+        <a href="{% url 'update-satellites' pk=satellite.id  %}">Modify!</a>
+        <li>Epoch: {{ satellite.date}}</li>
+        <li>Longitude: {{ satellite.longi }}</li>
+        <li>Latitude: {{ satellite.lati }}</li>
+        <li>Altitude: {{ satellite.alti }} km</li>
+    </ul>
+    <button class="btn btn-primary btn-xs" onclick="location.href='{% url 'sat-all'%}'" type="button">
+        Satellites list
+    </button>
+    <button class="btn btn-primary btn-xs" onclick="location.href='{% url 'astr-all'%}'" type="button">
+        Personnel list
+    </button>
+    <h2>Personnel:</h2>
+    <table border="solid">
+        <tr>
+            <td><b>Name</b></td>
+            <td><b>Surname</b></td>
+        </tr>
+        {% for person in personnel %}
+        <tr>
+            <td>{{ person.first_name }}</td>
+            <td>{{ person.last_name }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td>None!</td>
+            <td>None!</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>History:</h2>
+    <table border="solid">
+        <tr>
+            <th>Epoch</th>
+            <th>Longitude [deg]</th>
+            <th>Latitude [deg]</th>
+            <th>Altitude [km]</th>
+        </tr>
+        {% for sat_hist in history %}
+        <tr>
+            <td>{{ sat_hist.date }}</td>
+            <td>{{ sat_hist.longi }}</td>
+            <td>{{ sat_hist.lati }}</td>
+            <td>{{ sat_hist.alti }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}
+

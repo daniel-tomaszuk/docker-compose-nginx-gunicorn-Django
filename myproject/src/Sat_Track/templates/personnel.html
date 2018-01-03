@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Personnel list:</h1>
+    <ul>
+        {% for person in personnel %}
+            <li>
+                <a href="{% url 'astr-info' astr_id=person.id %}">
+                <!--<a href="/personnel/person.id">-->
+                    {{ person.first_name }} {{ person.last_name }}
+                </a>
+                <button class="btn btn-primary btn-xs" onclick="location.href='{% url 'astr-update' pk=person.id %}'" type="button">
+                    Modify
+                </button>
+                <button class="btn btn-primary btn-xs" onclick="location.href='{% url 'astr-delete' pk=person.id %}'" type="button">
+                    Delete
+                </button>
+            </li>
+        {% endfor %}
+        <br>
+        <button class="btn btn-primary btn-xs" onclick="location.href='{% url 'astr-add'%}'" type="button">
+            Add
+        </button>
+        <button class="btn btn-primary btn-xs" onclick="location.href='{% url 'sat-all'%}'" type="button">
+            Satellites list
+        </button>
+    </ul>
+{% endblock %}
+

@@ -1,0 +1,22 @@
+version: '2'  
+services:  
+  nginx:
+    image: nginx:latest
+    container_name: nginx_01
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./src:/src      
+      - ./static:/static
+      - ./config/nginx:/etc/nginx/conf.d
+    depends_on:
+      - web
+  web:
+    build: .
+    container_name: django_01
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py collectstatic --noinput && gunicorn Satelite_Tracking.wsgi -b 0.0.0.0:8000"
+    volumes:
+      - ./src:/src
+      - ./static:/static
+    expose:
+      - "8000"

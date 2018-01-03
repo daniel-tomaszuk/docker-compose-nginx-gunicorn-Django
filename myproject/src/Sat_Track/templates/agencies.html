@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Space agencies list:</h1>
+    <ul>
+        {% for agency in agencies %}
+            <li>
+                <a href="{% url 'agency-info' agency_id=agency.id %}">
+                <!--/space_agencies/{{ agency.pk }}">-->
+                    <b>{{ agency.acronym }}</b>
+                </a>
+                <button class="btn btn-primary btn-xs" onclick="location.href='{% url 'update-space-agency' pk=agency.id %}'" type="button">
+                    Modify
+                </button>
+                <button class="btn btn-primary btn-xs" onclick="location.href='{% url 'delete-space-agency' pk=agency.id %}'" type="button">
+                    Delete
+                </button>
+            </li>
+            <br>
+        {% endfor %}
+        <br>
+        <button class="btn btn-primary btn-xs" onclick="location.href='{% url 'add-space-agency' %}'" type="button">
+            Add
+        </button>
+        <button class="btn btn-primary btn-xs" onclick="location.href='{% url 'sat-all' %}'" type="button">
+            Satellites List
+        </button>
+    </ul>
+{% endblock %}
+
