@@ -7,7 +7,7 @@ services:
       - "8000:8000"
     volumes:
       - ./src:/src      
-      - ./static:/static
+      - ./src/static:/static
       - ./config/nginx:/etc/nginx/conf.d
     depends_on:
       - web
@@ -17,6 +17,6 @@ services:
     command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py collectstatic --noinput && gunicorn Satelite_Tracking.wsgi -b 0.0.0.0:8000"
     volumes:
       - ./src:/src
-      - ./static:/static
+      - ./src/static:/static
     expose:
       - "8000"
