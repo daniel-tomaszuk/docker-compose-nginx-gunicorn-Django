@@ -8,6 +8,7 @@ To run this repo you will need to build and start the project. In the directory 
 - sudo docker-compose build
 - sudo docker-compose up
 Project should be running on 0.0.0.0:8000 (for this Django example 0.0.0.0:8000/map).
+
 Nginx acts as proxy server of gunicorn. It will also manage all static files required by Django. 
 If you want to use your own project don't forget to properly configure Django setup.py file so it matches with nginx config (/config/nginx/.).
 Dockerfile uses python3.5 image and instals all requirements from /config/requirements.txt (pip freeze > requirement.txt)
