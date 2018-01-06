@@ -11,4 +11,4 @@ Project should be running on 0.0.0.0:8000 (for this Django example 0.0.0.0:8000/
 
 Nginx acts as proxy server of gunicorn. It will also manage all static files required by Django. 
 If you want to use your own project don't forget to properly configure Django setup.py file so it matches with nginx config (/config/nginx/.).
-Dockerfile uses python3.5 image and instals all requirements from /config/requirements.txt (pip freeze > requirement.txt)
+Dockerfile uses python3.5 image and installs all requirements from /config/requirements.txt (pip freeze > requirement.txt)
