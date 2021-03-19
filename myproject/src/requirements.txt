@@ -4,7 +4,7 @@ Django==1.11.28
 django-cors-headers==2.1.0
 django-countries==4.6.1
 django-kronos==1.0
-djangorestframework==3.9.1
+djangorestframework==3.11.2
 gunicorn==19.7.1
 idna==2.5
 numpy==1.13.0
