@@ -7,7 +7,7 @@ django-kronos==1.0
 djangorestframework==3.6.3
 gunicorn==19.7.1
 idna==2.5
-numpy==1.13.0
+numpy==1.22.0
 pyorbital==1.1.1
 python-crontab==2.2.3
 python-dateutil==2.6.0
